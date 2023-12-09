@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Icon from 'react-native-vector-icons/Octicons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
+import { Alert, AsyncStorage } from 'react-native';
 
 import theme from "../../styles/theme";
 
@@ -13,14 +14,46 @@ import {
     MenuButton
 } from './styles';
 import { HeaderApp } from "../../components/HeaderApp";
+import { useAuth } from "../../hooks/auth";
+import api from "../../services/axios";
 
 export function Dashboard() {
+
+    const { user } = useAuth();
+    const [userPoint, setUserPoint] = useState<Number>(0);
+    const [unityPoint, setUnityPoint] = useState<Number>(0);
+
+
+    useEffect(() => {
+        async function getUserPoints() {
+            const { data: { pontos } } = await api.get(`pontoindividual/todospontos/${user.id}`).catch((err) => {
+                console.log(err);
+                Alert.alert('Tivemos um problema ao carregar os dados');
+            });
+
+            setUserPoint(pontos);
+        }
+
+        async function getUnityPoints() {
+            const { data: { pontos } } = await api.get(`pontounidade/todospontos/${user.unidade_id}`).catch((err) => {
+                console.log(err);
+                Alert.alert('Tivemos um problema ao carregar os dados');
+            });
+
+
+            setUnityPoint(pontos);
+        }
+
+        getUserPoints();
+        getUnityPoints();
+    }, []);
+
     return (
         <Container>
 
             {/* Cabeçalho inicial que ira ter em todas as partes do app */}
             < HeaderApp
-                title="Olá Moises"
+                title={`Olá ${user.nome}`}
             />
 
             {/* Points side */}
@@ -28,12 +61,12 @@ export function Dashboard() {
             < PointsBox >
                 <ViewTextPont>
                     <TextPoint>Pontos</TextPoint>
-                    <TextPoint>R$ 300</TextPoint>
+                    <TextPoint>R$ {String(userPoint)}</TextPoint>
                 </ViewTextPont>
 
                 <ViewTextPont>
                     <TextPoint>P. Unidade</TextPoint>
-                    <TextPoint>R$ 120</TextPoint>
+                    <TextPoint>R$ {String(unityPoint)}</TextPoint>
                 </ViewTextPont>
 
             </PointsBox >

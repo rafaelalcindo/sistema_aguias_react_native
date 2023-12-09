@@ -21,11 +21,14 @@ import {
 import theme from './src/styles/theme';
 
 import { Login } from './src/screens/Login';
-import { Dashboard } from './src/screens/Dashboard';
-import { PointList } from './src/screens/PointList';
-import { PointListUnity } from './src/screens/PointListUnity';
-import { AddUnityPoint } from './src/screens/AddUnityPoint';
-import { AddPathfinderPoint } from './src/screens/AddPathfinderPoint';
+import { Routes } from './src/routes';
+
+import { AuthProvider, useAuth } from './src/hooks/auth';
+// import { Dashboard } from './src/screens/Dashboard';
+// import { PointList } from './src/screens/PointList';
+// import { PointListUnity } from './src/screens/PointListUnity';
+// import { AddUnityPoint } from './src/screens/AddUnityPoint';
+// import { AddPathfinderPoint } from './src/screens/AddPathfinderPoint';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -36,8 +39,11 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }} >
+
       <ThemeProvider theme={theme}>
-        <Login />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
       </ThemeProvider>
     </GestureHandlerRootView>
 

@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
+import { useAuth } from "../../hooks/auth";
+
 import theme from "../../styles/theme";
 
 import {
@@ -19,16 +21,18 @@ import { Button } from "../../components/Button";
 
 interface FormData {
     login: string;
-    senha: string;
+    password: string;
 }
 
 export function Login() {
+
+    const { handleLogin } = useAuth();
 
     const schema = Yup.object().shape({
         login: Yup
             .string()
             .required('Login é obrigatório'),
-        senha: Yup
+        password: Yup
             .string()
             .required('A Senha é obrigatório')
     });
@@ -42,8 +46,9 @@ export function Login() {
         resolver: yupResolver(schema)
     });
 
-    function handleLogin(form: FormData) {
-        console.log(form);
+    async function handleLoginForm(form: FormData) {
+
+        await handleLogin(form);
     }
 
     return (
@@ -68,19 +73,20 @@ export function Login() {
 
                         <TextInput>Senha:</TextInput>
                         <InputForm
-                            name="senha"
+                            name="password"
                             control={control}
                             placeholder='Senha'
                             autoCapitalize='sentences'
                             autoCorrect={false}
-                            error={errors.senha && errors.senha.message}
+                            secureTextEntry={true}
+                            error={errors.password && errors.password.message}
                         />
 
                         <SpaceButton>
                             <Button
                                 title="Entrar"
                                 color={theme.colors.success}
-                                onPress={handleSubmit(handleLogin)}
+                                onPress={handleSubmit(handleLoginForm)}
                             />
                         </SpaceButton>
                     </Fields>
