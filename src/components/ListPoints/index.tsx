@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import {
     Container,
@@ -9,21 +10,31 @@ import {
     DescriptionEvent
 } from './styles';
 
-export function ListPoints() {
+import { UsuarioPontoProps } from '../../types/UsuarioPonto';
+
+interface Point {
+    point: UsuarioPontoProps
+}
+
+export function ListPoints(
+    {
+        point
+    }: Point
+) {
     return (
         <Container>
             <ViewCard>
                 <ViewPoint>
                     <PointNumber>
-                        250
+                        {point.pontos}
                     </PointNumber>
                     <RegisterDate>
-                        12/12/2023
+                        {moment.utc(point.created_at).format('DD/MM/YYYY hh:mm')}
                     </RegisterDate>
                 </ViewPoint>
 
                 <DescriptionEvent>
-                    Ponto de chegada no Clube
+                    {point.descricao}
                 </DescriptionEvent>
             </ViewCard>
         </Container>

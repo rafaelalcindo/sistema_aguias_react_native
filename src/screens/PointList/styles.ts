@@ -2,6 +2,9 @@ import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import theme from '../../styles/theme';
+import { FlatList } from 'react-native-gesture-handler';
+import { UsuarioPontoProps } from '../../types/UsuarioPonto';
+import { UnidadeProps } from '../../types/Unidade';
 
 export const Container = styled.View`
     flex: 1;
@@ -31,4 +34,16 @@ export const TextPoint = styled.Text`
     font-size: 23px;
     color: ${theme.colors.background_black};
     margin-left: ${RFValue(20)}px;
+`;
+
+export const PointsLists = styled(FlatList<UsuarioPontoProps>)
+    .attrs(
+        {
+            contentContainerStyle: {
+
+            },
+            showVerticalScrollIndicator: false
+        }
+    )
+    `
 `;

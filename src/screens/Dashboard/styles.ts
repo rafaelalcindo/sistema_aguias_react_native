@@ -48,7 +48,7 @@ export const MenuView = styled.View`
     
 `;
 
-export const MenuButton = styled.View`
+export const MenuButton = styled.TouchableOpacity`
     height: ${RFValue(80)}px;
     width: ${RFValue(80)}px;
 
@@ -60,9 +60,10 @@ export const MenuButton = styled.View`
 
     background-color: ${theme.colors.text_detail};
 
-    padding-top: ${RFValue(25)}px;
-    padding-left: ${RFValue(25)}px;
-
     margin-right: 30;
     margin-top: ${RFValue(30)}px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;

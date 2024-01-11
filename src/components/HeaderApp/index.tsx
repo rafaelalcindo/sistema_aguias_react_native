@@ -10,6 +10,7 @@ import {
     ProfileNameUser,
     TextName
 } from './styles';
+import { Text } from "react-native";
 
 interface Props {
     title: string;

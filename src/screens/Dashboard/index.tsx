@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Icon from 'react-native-vector-icons/Octicons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import { Alert, AsyncStorage } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import theme from "../../styles/theme";
 
@@ -18,6 +19,8 @@ import { useAuth } from "../../hooks/auth";
 import api from "../../services/axios";
 
 export function Dashboard() {
+
+    const navigation = useNavigation();
 
     const { user } = useAuth();
     const [userPoint, setUserPoint] = useState<Number>(0);
@@ -82,7 +85,7 @@ export function Dashboard() {
                     <Icon2 name="github" size={32} color={theme.colors.background_black} />
                 </MenuButton>
 
-                <MenuButton>
+                <MenuButton onPress={() => navigation.navigate('PointList')} >
                     <Icon2 name="piechart" size={32} color={theme.colors.background_black} />
                 </MenuButton>
 

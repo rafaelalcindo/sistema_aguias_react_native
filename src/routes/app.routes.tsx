@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 const { Navigator, Screen } = createStackNavigator();
 
 import { Dashboard } from "../screens/Dashboard";
+import { PointList } from "../screens/PointList";
 
 export function AppRoutes() {
     const theme = useTheme();
@@ -39,6 +40,22 @@ export function AppRoutes() {
                     )
                 }}
             />
+
+            <Screen
+                name="PointList"
+                component={PointList}
+                options={{
+                    tabBarIcon: (({ size, color }) =>
+                        <MaterialIcons
+                            name="format-list-bulleted"
+                            size={size}
+                            color={color}
+                        />
+                    )
+                }}
+            />
+
+
         </Navigator>
     )
 }

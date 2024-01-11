@@ -22,6 +22,7 @@ export const ImageProfile = styled.View`
     height: ${RFValue(100)}px;
     
     justify-content: center;
+
 `;
 
 export const EmptyImage = styled.View`
@@ -36,9 +37,13 @@ export const EmptyImage = styled.View`
     border-top-right-radius: 30;
 
     background-color: ${theme.colors.darkLight_blue};
-    padding-left: ${RFValue(10)}px;
-    padding-top:${RFValue(10)}px;
+    /* padding-left: ${RFValue(10)}px;
+    padding-top:${RFValue(10)}px; */
     border-color: ${theme.colors.darkLight_blue};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const ProfileNameUser = styled.View`
