@@ -29,8 +29,8 @@ export default {
         light_blue: "#2e609b",
     },
     fonts: {
-        primary_400: 'Inter_400Regular',
-        primary_500: 'Inter_500Medium',
+        primary_400: 'Poppins_400Regular',
+        primary_500: 'Poppins_500Medium',
 
         secondary_400: 'Archivo_400Regular',
         secondary_500: 'Archivo_500Medium',

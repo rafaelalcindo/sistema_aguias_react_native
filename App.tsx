@@ -37,8 +37,14 @@ export default function App() {
     Poppins_700Bold
   });
 
+  // if (!fontsLoaded) {
+  //   return <></>
+  // }
+
   return (
+
     <GestureHandlerRootView style={{ flex: 1 }} >
+
 
       <ThemeProvider theme={theme}>
         <AuthProvider>

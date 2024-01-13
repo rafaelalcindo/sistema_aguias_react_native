@@ -49,8 +49,8 @@ export const MenuView = styled.View`
 `;
 
 export const MenuButton = styled.TouchableOpacity`
-    height: ${RFValue(80)}px;
-    width: ${RFValue(80)}px;
+    height: ${RFValue(90)}px;
+    width: ${RFValue(90)}px;
 
     border-bottom-left-radius: 10;
     border-bottom-right-radius: 10;
@@ -60,7 +60,7 @@ export const MenuButton = styled.TouchableOpacity`
 
     background-color: ${theme.colors.text_detail};
 
-    margin-right: 30;
+    margin-right: 20;
     margin-top: ${RFValue(30)}px;
 
     display: flex;

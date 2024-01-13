@@ -16,7 +16,11 @@ export const WrapperContent = styled.View`
     padding-top: 40%;
 `;
 
-export const Fields = styled.View``;
+export const Fields = styled.ScrollView.attrs(
+    {
+        showsVerticalScrollIndicator: true
+    }
+)``;
 
 export const Form = styled.View`
     flex: 1;

@@ -17,21 +17,24 @@ import {
 import { HeaderApp } from "../../components/HeaderApp";
 import { useAuth } from "../../hooks/auth";
 import api from "../../services/axios";
+import { Skeleton } from "../../components/Loaders/Skeleton";
 
 export function Dashboard() {
 
     const navigation = useNavigation();
 
-    const { user } = useAuth();
+    const { user, handleLogOut } = useAuth();
     const [userPoint, setUserPoint] = useState<Number>(0);
     const [unityPoint, setUnityPoint] = useState<Number>(0);
 
-
     useEffect(() => {
+
         async function getUserPoints() {
+
             const { data: { pontos } } = await api.get(`pontoindividual/todospontos/${user.id}`).catch((err) => {
                 console.log(err);
                 Alert.alert('Tivemos um problema ao carregar os dados');
+                handleLogOut();
             });
 
             setUserPoint(pontos);
@@ -41,6 +44,7 @@ export function Dashboard() {
             const { data: { pontos } } = await api.get(`pontounidade/todospontos/${user.unidade_id}`).catch((err) => {
                 console.log(err);
                 Alert.alert('Tivemos um problema ao carregar os dados');
+                handleLogOut();
             });
 
 
@@ -64,12 +68,34 @@ export function Dashboard() {
             < PointsBox >
                 <ViewTextPont>
                     <TextPoint>Pontos</TextPoint>
-                    <TextPoint>R$ {String(userPoint)}</TextPoint>
+                    {
+                        userPoint ?
+                            <TextPoint>R$ {String(userPoint)}</TextPoint>
+                            :
+                            <Skeleton
+                                width={70}
+                                height={40}
+                                padding={0}
+                                margin_bottom={0}
+                            />
+                    }
+
                 </ViewTextPont>
 
                 <ViewTextPont>
                     <TextPoint>P. Unidade</TextPoint>
-                    <TextPoint>R$ {String(unityPoint)}</TextPoint>
+                    {
+                        unityPoint ?
+                            <TextPoint>R$ {String(unityPoint)}</TextPoint>
+                            :
+                            <Skeleton
+                                width={70}
+                                height={40}
+                                padding={0}
+                                margin_bottom={0}
+                            />
+                    }
+
                 </ViewTextPont>
 
             </PointsBox >
@@ -78,27 +104,27 @@ export function Dashboard() {
 
             < MenuView >
                 <MenuButton>
-                    <Icon2 name="qrcode" size={32} color={theme.colors.background_black} />
+                    <Icon2 name="qrcode" size={39} color={theme.colors.background_black} />
                 </MenuButton>
 
                 <MenuButton>
-                    <Icon2 name="github" size={32} color={theme.colors.background_black} />
+                    <Icon2 name="github" size={39} color={theme.colors.background_black} />
                 </MenuButton>
 
                 <MenuButton onPress={() => navigation.navigate('PointList')} >
-                    <Icon2 name="piechart" size={32} color={theme.colors.background_black} />
+                    <Icon2 name="piechart" size={39} color={theme.colors.background_black} />
                 </MenuButton>
 
                 <MenuButton>
-                    <Icon2 name="idcard" size={32} color={theme.colors.background_black} />
+                    <Icon2 name="idcard" size={39} color={theme.colors.background_black} />
                 </MenuButton>
 
                 <MenuButton>
-                    <Icon2 name="profile" size={32} color={theme.colors.background_black} />
+                    <Icon2 name="profile" size={39} color={theme.colors.background_black} />
                 </MenuButton>
 
                 <MenuButton>
-                    <Icon2 name="table" size={32} color={theme.colors.background_black} />
+                    <Icon2 name="table" size={39} color={theme.colors.background_black} />
                 </MenuButton>
             </MenuView >
 
