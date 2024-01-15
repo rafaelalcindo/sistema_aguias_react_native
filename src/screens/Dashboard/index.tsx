@@ -115,7 +115,7 @@ export function Dashboard() {
                     <Icon2 name="piechart" size={39} color={theme.colors.background_black} />
                 </MenuButton>
 
-                <MenuButton>
+                <MenuButton onPress={() => navigation.navigate('PointListUnity')}>
                     <Icon2 name="idcard" size={39} color={theme.colors.background_black} />
                 </MenuButton>
 

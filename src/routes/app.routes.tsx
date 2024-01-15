@@ -10,6 +10,7 @@ const { Navigator, Screen } = createStackNavigator();
 
 import { Dashboard } from "../screens/Dashboard";
 import { PointList } from "../screens/PointList";
+import { PointListUnity } from "../screens/PointListUnity";
 
 export function AppRoutes() {
     const theme = useTheme();
@@ -44,6 +45,20 @@ export function AppRoutes() {
             <Screen
                 name="PointList"
                 component={PointList}
+                options={{
+                    tabBarIcon: (({ size, color }) =>
+                        <MaterialIcons
+                            name="format-list-bulleted"
+                            size={size}
+                            color={color}
+                        />
+                    )
+                }}
+            />
+
+            <Screen
+                name="PointListUnity"
+                component={PointListUnity}
                 options={{
                     tabBarIcon: (({ size, color }) =>
                         <MaterialIcons
