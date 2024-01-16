@@ -8,4 +8,10 @@ to execute the app in your phone, use the option
   npx expo start --tunnel
 ```
 
+opções
+
+1 - ADM
+2 - Conselheiro
+3 - Desbravador
+
 ![Logo](https://sg.sdasystems.org/cms/logos_clubes/16040.jpg)

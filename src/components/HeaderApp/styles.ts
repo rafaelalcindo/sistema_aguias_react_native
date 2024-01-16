@@ -20,8 +20,12 @@ export const ProfileBox = styled.View`
 export const ImageProfile = styled.View`
     width: 100%;
     height: ${RFValue(100)}px;
+    padding-top: ${RFValue(30)}px;
+    padding-right: ${RFValue(30)}px;
+    display: flex;
+    flex-direction: row;
     
-    justify-content: center;
+    justify-content: space-between;
 
 `;
 

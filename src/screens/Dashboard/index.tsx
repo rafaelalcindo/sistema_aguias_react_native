@@ -61,6 +61,7 @@ export function Dashboard() {
             {/* Cabeçalho inicial que ira ter em todas as partes do app */}
             < HeaderApp
                 title={`Olá ${user.nome}`}
+                user={user}
             />
 
             {/* Points side */}
