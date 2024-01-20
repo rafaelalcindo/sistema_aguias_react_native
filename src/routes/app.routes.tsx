@@ -11,6 +11,7 @@ const { Navigator, Screen } = createStackNavigator();
 import { Dashboard } from "../screens/Dashboard";
 import { PointList } from "../screens/PointList";
 import { PointListUnity } from "../screens/PointListUnity";
+import { EventListas } from "../screens/EventListas";
 
 export function AppRoutes() {
     const theme = useTheme();
@@ -59,6 +60,20 @@ export function AppRoutes() {
             <Screen
                 name="PointListUnity"
                 component={PointListUnity}
+                options={{
+                    tabBarIcon: (({ size, color }) =>
+                        <MaterialIcons
+                            name="format-list-bulleted"
+                            size={size}
+                            color={color}
+                        />
+                    )
+                }}
+            />
+
+            <Screen
+                name="EventListas"
+                component={EventListas}
                 options={{
                     tabBarIcon: (({ size, color }) =>
                         <MaterialIcons
